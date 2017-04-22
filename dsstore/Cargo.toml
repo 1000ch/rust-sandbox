@@ -1,0 +1,7 @@
+[package]
+name = "dsstore"
+version = "0.0.0"
+authors = ["Shogo Sensui <shogo.sensui@gmail.com>"]
+
+[dependencies]
+glob = "0.2.11"
