@@ -3,11 +3,14 @@ extern crate glob;
 use std::env;
 use std::result::Result;
 use std::fs;
+use std::path::PathBuf;
 use glob::glob;
 
 fn main() {
-    let cwd = env::current_dir().unwrap();
-    let glob_path = cwd.join("**/.DS_Store");
+    let glob_path = match env::current_dir() {
+        Ok(cwd) => cwd.join("**/.DS_Store"),
+        Err(_) => PathBuf::from("~/**/.DS_Store")
+    };
     let glob_str = glob_path.to_str().unwrap();
 
     println!("Removing .DS_Store from {:?}", glob_path.display());
